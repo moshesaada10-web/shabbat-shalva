@@ -317,7 +317,7 @@
   </div>
 
 <script>
-const ENDPOINT = window.SHABBAT_ENDPOINT || "";
+const ENDPOINT = "https://crudcrud.com/api/4f02ae770db44e48919a7473ec58123c/moshav_shalva_lech_lecha_2026";
 document.getElementById("reg-form")?.addEventListener("submit", async (e) => {
   e.preventDefault();
   const form = e.target;
@@ -336,7 +336,7 @@ document.getElementById("reg-form")?.addEventListener("submit", async (e) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
-    if (!res.ok && res.type !== "opaque") throw new Error("bad status");
+    if (!res.ok) throw new Error("bad status");
     form.innerHTML = "<p style=\"text-align:center;font-size:20px;color:#1c3a5f;padding:28px 0\">נרשמתם. מחכים לכם בשבת.</p>";
   } catch (err) {
     btn.disabled = false;
