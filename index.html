@@ -316,8 +316,10 @@
     <footer>מושב שלווה · שבת לך לך · אלון שבות</footer>
   </div>
 
+
+
 <script>
-const ENDPOINT = "https://crudcrud.com/api/f7ed6c90f3ed42ae96144c28b4670f2b";
+const ENDPOINT = "https://crudcrud.com/api/117211189c1746f5842d0a7ccf770427";
 document.getElementById("reg-form")?.addEventListener("submit", async (e) => {
   e.preventDefault();
   const form = e.target;
@@ -330,7 +332,6 @@ document.getElementById("reg-form")?.addEventListener("submit", async (e) => {
   btn.disabled = true;
   btn.textContent = "שולח…";
   try {
-    if (!ENDPOINT) throw new Error("no endpoint");
     const res = await fetch(ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
