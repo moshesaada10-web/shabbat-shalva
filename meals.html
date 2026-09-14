@@ -7,7 +7,7 @@
 <title>סיכום ארוחות · שבת שלווה</title>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Frank+Ruhl+Libre:wght@700&display=swap" rel="stylesheet" />
 <style>
-:root { --navy:#1c3a5f; --cream:#f6f0e4; --paper:#fffdf8; --line:#e4d9c5; --muted:#6b6458; --gold:#c4a35a; }
+:root { --navy:#1c3a5f; --cream:#f6f0e4; --paper:#fffdf8; --line:#e4d9c5; --muted:#6b6458; }
 * { box-sizing:border-box; margin:0; padding:0; }
 body { font-family:Assistant,sans-serif; background:var(--cream); color:#2b2a26; padding:20px 14px 40px; }
 .wrap { max-width:720px; margin:0 auto; }
@@ -28,7 +28,6 @@ td.num, th.num { text-align:center; font-weight:700; }
 .card { background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:14px; text-align:center; }
 .card .n { font-size:28px; font-weight:700; color:var(--navy); }
 .card .l { font-size:12px; color:var(--muted); }
-ul { margin:8px 0 0 0; padding:0 18px 0 0; color:var(--muted); font-size:14px; }
 @media print { body { background:white; } }
 </style>
 </head>
@@ -37,7 +36,7 @@ ul { margin:8px 0 0 0; padding:0 18px 0 0; color:var(--muted); font-size:14px; }
 <header>
   <h1>סיכום ארוחות</h1>
   <div class="sub">שבת קהילה · מושב שלווה · לך לך 23–24.10</div>
-  <div class="meta">עודכן 14.9.2026 11:48 · לפי 12 משפחות שנרשמו</div>
+  <div class="meta">עודכן 14.9.2026 14:56 · כולל גם משפחות בלי לינה (שני, סעדה)</div>
 </header>
 
 <div class="cards">
@@ -62,26 +61,26 @@ ul { margin:8px 0 0 0; padding:0 18px 0 0; color:var(--muted); font-size:14px; }
 <section>
 <h2>מיוחדים לאוכל</h2>
 <table>
-<thead><tr><th>סוג</th><th class="num">כמות</th><th>פירוט</th></tr></thead>
+<thead><tr><th>סוג</th><th class="num">מנות</th><th>פירוט</th></tr></thead>
 <tbody>
-<tr><td>צמחוני / טבעוני</td><td class="num">1</td><td>משה רוזנס — 1</td></tr>
-<tr><td>ללא גלוטן (לפי משפחה)</td><td class="num">10</td><td>תומר רונן — 4 · נועם ארז — 6</td></tr>
-<tr><td>בלי חלב</td><td class="num">—</td><td>משה רוזנס (עם הצמחוני)</td></tr>
+<tr><td>צמחוני + בלי חלב</td><td class="num">1</td><td>משה רוזנס — אותה מנה</td></tr>
+<tr><td>ללא גלוטן</td><td class="num">1</td><td>נועם ארז — אחד</td></tr>
+<tr><td>ללא גלוטן (לבדיקה)</td><td class="num">?</td><td>תומר רונן — נרשם ״גלוטן״, לא פורט כמה</td></tr>
 </tbody>
 </table>
-<p class="note">גלוטן: בטופס צוין ברמת משפחה בלי כמה אנשים — לכן נספרות כל הנפשות במשפחה. כדאי לאשר מולם כמה באמת בלי גלוטן.</p>
 </section>
 
 <section>
 <h2>סה״כ לארוחה</h2>
 <table>
 <tbody>
-<tr><td>סה״כ נפשות</td><td class="num big">71</td></tr>
+<tr><td>סה״כ נפשות (כולל בלי לינה)</td><td class="num big">71</td></tr>
 <tr><td>מנות מומלצות (בלי תינוקות)</td><td class="num big">63</td></tr>
-<tr><td>מתוכן צמחוני</td><td class="num">1</td></tr>
-<tr><td>מתוכן ללא גלוטן (הערכה)</td><td class="num">10</td></tr>
+<tr><td>מתוכן צמחוני בלי חלב</td><td class="num">1</td></tr>
+<tr><td>מתוכן ללא גלוטן (מאושר)</td><td class="num">1</td></tr>
 </tbody>
 </table>
+<p class="note">בלי לינה כלולים בסיכום: יאיר שני (6) + משה סעדה (6).</p>
 </section>
 </div>
 </body>
