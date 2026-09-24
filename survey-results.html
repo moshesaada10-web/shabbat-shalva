@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>סיכום סקר · למארגנים בלבד</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Frank+Ruhl+Libre:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1c3a5f;
+      --navy-deep: #12263d;
+      --gold: #c4a35a;
+      --gold-soft: #e8d5a3;
+      --cream: #f6f0e4;
+      --paper: #fffdf8;
+      --ink: #2b2a26;
+      --muted: #6b6458;
+      --line: #e4d9c5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Assistant, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.5;
+      padding: 20px 14px 48px;
+    }
+    .wrap { max-width: 900px; margin: 0 auto; }
+    header {
+      background: linear-gradient(165deg, var(--navy-deep), var(--navy));
+      color: var(--paper);
+      border-radius: 16px;
+      padding: 22px 20px;
+      text-align: center;
+      margin-bottom: 14px;
+      position: relative;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(196, 163, 90, 0.4);
+      border-radius: 10px;
+      pointer-events: none;
+    }
+    h1 {
+      font-family: "Frank Ruhl Libre", serif;
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+    .sub { color: var(--gold-soft); font-size: 14px; }
+    .warn {
+      margin-top: 10px;
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(196,163,90,0.35);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .status { font-size: 13px; color: var(--muted); }
+    button.refresh {
+      background: var(--navy);
+      color: white;
+      border: 0;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-family: Assistant, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button.refresh:disabled { opacity: 0.6; }
+    .tally {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .tally-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 12px;
+      text-align: center;
+    }
+    .tally-card .n {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+    .tally-card .pct {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+      margin: 4px 0;
+    }
+    .tally-card .l {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .total-bar {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: center;
+      margin-bottom: 14px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .total-bar strong { color: var(--navy); font-size: 18px; }
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      overflow-x: auto;
+    }
+    section h2 {
+      font-family: "Frank Ruhl Libre", serif;
+      color: var(--navy);
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; }
+    th {
+      background: #eef3f8;
+      color: var(--navy);
+      text-align: right;
+      padding: 10px 8px;
+      border-bottom: 2px solid var(--line);
+      white-space: nowrap;
+    }
+    td {
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    td.notes { max-width: 220px; word-break: break-word; color: var(--muted); font-size: 13px; }
+    .empty { text-align: center; color: var(--muted); padding: 28px; }
+    .err {
+      background: #fff5f5;
+      border: 1px solid #f0c2c2;
+      color: #8a2a2a;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 700px) {
+      .tally { grid-template-columns: 1fr; }
+      h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>סיכום סקר · למארגנים בלבד</h1>
+      <div class="sub">שבת קהילה · מושב שלווה · לך לך 23–24.10</div>
+      <div class="warn">לא לפרסום · כולל שמות וטלפונים</div>
+    </header>
+
+    <div class="toolbar">
+      <div class="status" id="status">טוען…</div>
+      <button class="refresh" id="refresh" type="button">רענון</button>
+    </div>
+
+    <div id="error" class="err" hidden></div>
+
+    <div class="tally">
+      <div class="tally-card">
+        <div class="n" id="c-stay">0</div>
+        <div class="pct" id="p-stay">0%</div>
+        <div class="l">לקיים בכל מצב</div>
+      </div>
+      <div class="tally-card">
+        <div class="n" id="c-postpone_else_stay">0</div>
+        <div class="pct" id="p-postpone_else_stay">0%</div>
+        <div class="l">להעדיף דחייה; אם אי אפשר — לקיים</div>
+      </div>
+      <div class="tally-card">
+        <div class="n" id="c-postpone_else_cancel">0</div>
+        <div class="pct" id="p-postpone_else_cancel">0%</div>
+        <div class="l">להעדיף דחייה; אם אי אפשר — לבטל (גם בקנס)</div>
+      </div>
+    </div>
+
+    <div class="total-bar">סה״כ תשובות: <strong id="total">0</strong></div>
+
+    <section>
+      <h2>רשימה מלאה (למארגנים)</h2>
+      <div id="table-wrap"><p class="empty">טוען נתונים…</p></div>
+    </section>
+  </div>
+
+<script>
+const ENDPOINT = "https://crudcrud.com/api/94cde2c7d8654e0f953977432d0093c0/moshav_shalva_lech_lecha_2026_survey";
+
+const LABELS = {
+  stay: "לקיים בכל מצב",
+  postpone_else_stay: "להעדיף דחייה; אם אי אפשר — לקיים",
+  postpone_else_cancel: "להעדיף דחייה; אם אי אפשר — לבטל (גם בקנס)"
+};
+
+function esc(s) {
+  return String(s ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function formatTs(ts) {
+  if (!ts) return "—";
+  try {
+    const d = new Date(ts);
+    if (Number.isNaN(d.getTime())) return esc(ts);
+    return d.toLocaleString("he-IL", { timeZone: "Asia/Jerusalem" });
+  } catch {
+    return esc(ts);
+  }
+}
+
+async function load() {
+  const btn = document.getElementById("refresh");
+  const status = document.getElementById("status");
+  const errEl = document.getElementById("error");
+  btn.disabled = true;
+  status.textContent = "טוען…";
+  errEl.hidden = true;
+
+  try {
+    const res = await fetch(ENDPOINT + "?_=" + Date.now(), { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const rows = await res.json();
+    if (!Array.isArray(rows)) throw new Error("תשובה לא תקינה");
+
+    const counts = { stay: 0, postpone_else_stay: 0, postpone_else_cancel: 0 };
+    for (const r of rows) {
+      if (counts[r.choice] !== undefined) counts[r.choice]++;
+    }
+    const total = rows.length;
+    const pct = (n) => total ? Math.round((n / total) * 100) : 0;
+
+    document.getElementById("c-stay").textContent = counts.stay;
+    document.getElementById("c-postpone_else_stay").textContent = counts.postpone_else_stay;
+    document.getElementById("c-postpone_else_cancel").textContent = counts.postpone_else_cancel;
+    document.getElementById("p-stay").textContent = pct(counts.stay) + "%";
+    document.getElementById("p-postpone_else_stay").textContent = pct(counts.postpone_else_stay) + "%";
+    document.getElementById("p-postpone_else_cancel").textContent = pct(counts.postpone_else_cancel) + "%";
+    document.getElementById("total").textContent = total;
+
+    const wrap = document.getElementById("table-wrap");
+    if (!rows.length) {
+      wrap.innerHTML = "<p class=\"empty\">עדיין אין תשובות.</p>";
+    } else {
+      const sorted = [...rows].sort((a, b) => String(b.ts || "").localeCompare(String(a.ts || "")));
+      let html = "<table><thead><tr><th>שם משפחה</th><th>טלפון</th><th>בחירה</th><th>הערות</th><th>זמן</th></tr></thead><tbody>";
+      for (const r of sorted) {
+        html += "<tr>";
+        html += "<td>" + esc(r.family_name) + "</td>";
+        html += "<td>" + esc(r.phone || "—") + "</td>";
+        html += "<td>" + esc(LABELS[r.choice] || r.choice) + "</td>";
+        html += "<td class=\"notes\">" + esc(r.notes || "—") + "</td>";
+        html += "<td>" + formatTs(r.ts) + "</td>";
+        html += "</tr>";
+      }
+      html += "</tbody></table>";
+      wrap.innerHTML = html;
+    }
+
+    const now = new Date().toLocaleString("he-IL", { timeZone: "Asia/Jerusalem" });
+    status.textContent = "עודכן " + now + " · " + total + " תשובות";
+  } catch (e) {
+    errEl.hidden = false;
+    errEl.textContent = "טעינה נכשלה: " + (e && e.message ? e.message : e);
+    status.textContent = "שגיאה בטעינה";
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+document.getElementById("refresh").addEventListener("click", load);
+load();
+</script>
+</body>
+</html>
