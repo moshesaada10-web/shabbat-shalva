@@ -210,7 +210,9 @@
   </div>
 
 <script>
-const ENDPOINT = "https://crudcrud.com/api/4c382a25978e4ac0925749e129403f26/moshav_shalva_lech_lecha_2026_survey";
+const ENDPOINT = "https://vkjtociluqnpzykufjbn.supabase.co/rest/v1/shalva_survey";
+const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZranRvY2lsdXFucHp5a3VmamJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2OTAyODQsImV4cCI6MjA5MjI2NjI4NH0.55fVr6SBohlc1YEfCzwHQ4x2JMWCGiX5DyYF0qjdF28";
+const SB_H = { "apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY, "Content-Type": "application/json" };
 
 const LABELS = {
   stay: "לקיים בכל מצב",
@@ -246,9 +248,9 @@ async function load() {
   errEl.hidden = true;
 
   try {
-    const res = await fetch(ENDPOINT + "?_=" + Date.now(), { cache: "no-store" });
+    const res = await fetch(ENDPOINT + "?select=*&order=id", { cache: "no-store", headers: SB_H });
     if (!res.ok) throw new Error("HTTP " + res.status);
-    const rows = await res.json();
+    const rows = (await res.json()).map(r => Object.assign({}, r.data, { _id: r.id, ts: (r.data && r.data.ts) || r.created_at }));
     if (!Array.isArray(rows)) throw new Error("תשובה לא תקינה");
 
     const counts = { stay: 0, postpone_else_stay: 0, postpone_else_cancel: 0 };
