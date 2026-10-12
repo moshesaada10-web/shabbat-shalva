@@ -155,7 +155,7 @@ async function rm(_id,name){
  if(!confirm(`להסיר את ${name} מהפריט?`))return;
  try{await fetch(ENDPOINT+"/"+_id,{method:"DELETE"});await load();}catch(e){alert("ההסרה נכשלה");}
 }
-render();load();setInterval(()=>{if(!(document.activeElement&&document.activeElement.tagName==="INPUT"))load();},20000);
+render();load();setInterval(()=>{if(document.visibilityState==="visible"&&!(document.activeElement&&document.activeElement.tagName==="INPUT"))load();},60000);document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")load();});
 </script>
 </body>
 </html>
