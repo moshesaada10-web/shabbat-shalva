@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<title>שיבוצים ומשימות · שבת קהילת מושב שלווה</title>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Frank+Ruhl+Libre:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+:root{--navy:#1c3a5f;--navy-deep:#12263d;--gold:#c4a35a;--gold-soft:#e8d5a3;--cream:#f6f0e4;--paper:#fffdf8;--ink:#2b2a26;--muted:#6b6458;--line:#e4d9c5;--green:#3f7a4f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Assistant,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 64px}
+header.hero{background:linear-gradient(165deg,var(--navy-deep),var(--navy));color:var(--paper);border-radius:20px;padding:0 0 26px;text-align:center;box-shadow:0 12px 40px rgba(18,38,61,.22);overflow:hidden}
+.candles{display:block;width:100%;height:150px;object-fit:cover;object-position:center 60%}
+.hero-inner{padding:18px 22px 0}
+h1{font-family:"Frank Ruhl Libre",serif;font-size:30px;line-height:1.2;margin-bottom:6px}
+.sub{color:var(--gold-soft);font-size:16px}
+.progress{margin:16px auto 0;max-width:420px}
+.bar{height:10px;background:rgba(255,255,255,.18);border-radius:6px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--gold);width:0;transition:width .4s}
+section.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 16px;margin-top:18px;box-shadow:0 4px 14px rgba(0,0,0,.04)}
+h2{font-family:"Frank Ruhl Libre",serif;color:var(--navy);font-size:22px;margin-bottom:6px}
+h3{color:var(--navy);font-size:16px;margin:14px 0 6px;border-bottom:1px dashed var(--line);padding-bottom:4px}
+.hint{color:var(--muted);font-size:14px;margin-bottom:8px}
+.sched li{list-style:none;display:flex;gap:10px;padding:5px 0;border-bottom:1px solid #f0e8d8}
+.sched b{color:var(--gold);min-width:46px;font-variant-numeric:tabular-nums}
+.item{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:8px 0;background:#fff}
+.item .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.item .t{font-weight:600}
+.badge{font-size:12px;border-radius:20px;padding:2px 10px;white-space:nowrap}
+.free{background:#fdecd2;color:#9a5b00}.taken{background:#e2f0e5;color:var(--green)}
+.claims{margin-top:6px}
+.claim{display:flex;justify-content:space-between;align-items:center;font-size:15px;padding:3px 0}
+.claim small{color:var(--muted)}
+.rm{background:none;border:none;color:#a33;font-size:13px;cursor:pointer;font-family:inherit}
+.add{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.add input{flex:1 1 120px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:15px}
+.add button,.open{background:var(--navy);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-family:inherit;font-size:15px;cursor:pointer}
+.open{background:var(--gold);color:var(--navy-deep);font-weight:700;margin-top:8px}
+footer{text-align:center;color:var(--muted);margin-top:22px;font-size:15px}
+#err{display:none;background:#fde2e2;color:#8a1f1f;padding:10px;border-radius:10px;margin-top:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<img class="candles" src="shabbat-candles.jpg" alt="נרות שבת" />
+<div class="hero-inner">
+<h1>🌿 שבת קהילת מושב שלווה 🌿</h1>
+<div class="sub">📍 ישיבת הר עציון – אלון שבות · פרשת לך לך · 23–24.10.2026</div>
+<div class="progress"><div id="progTxt">טוען…</div><div class="bar"><i id="progBar"></i></div></div>
+</div>
+</header>
+<div id="err">שגיאה בטעינת הנתונים. נסו לרענן את הדף.</div>
+
+<section class="card">
+<h2>📅 לו״ז השבת</h2>
+<h3>יום שישי</h3>
+<ul class="sched">
+<li><b>11:00</b><span>מפגש בגוש עציון – פעילות משפחתית משותפת (מיקום ותוכן ייקבעו בהמשך) + ארוחת בוקר קלה ומשותפת</span></li>
+<li><b>15:00</b><span>הגעה לישיבה – קבלת פנים, שתייה ועוגה, התארגנות בחדרים</span></li>
+<li><b>17:38</b><span>הדלקת נרות</span></li>
+</ul>
+<h3>ערב שבת</h3>
+<ul class="sched">
+<li><b>🕯️</b><span>מנחה, קבלת שבת וערבית</span></li>
+<li><b>🍷</b><span>סעודת ליל שבת ושירי שבת</span></li>
+<li><b>💬</b><span>אחרי הסעודה פאנל קהילתי למבוגרים; במקביל שעת סיפור לקטנים ופעילות ומשחקים לגדולים</span></li>
+</ul>
+<h3>שבת</h3>
+<ul class="sched">
+<li><b>07:30</b><span>קפה ועוגה</span></li>
+<li><b>08:00</b><span>שחרית</span></li>
+<li><b>10:30</b><span>שיעור מיוחד לילדים</span></li>
+<li><b>11:30</b><span>סעודת שבת</span></li>
+<li><b>13:00</b><span>מנחה</span></li>
+<li><b>13:15</b><span>תהילים משותפים לילדי המושב וחלוקת פרסים 🎁</span></li>
+<li><b>15:00</b><span>סיור מודרך לאלון הבודד</span></li>
+<li><b>17:15</b><span>סעודה שלישית</span></li>
+<li><b>18:36</b><span>ערבית והבדלה</span></li>
+</ul>
+<p class="hint" style="margin-top:8px">זמני התפילות יתואמו עם הישיבה.</p>
+</section>
+
+<div id="board"></div>
+
+<footer>
+<p>💰 השתתפות 100 ₪ לסעודת שבת – פרטים בהמשך</p>
+<p>לשאלות: משה סעדה <a href="tel:0543375242">054-3375242</a></p>
+</footer>
+</div>
+<script>
+const ENDPOINT = "https://crudcrud.com/api/f50e8aae31374b29bdfd82eb398f59f8/moshav_shalva_lech_lecha_2026_tasks";
+// max: max names per item (0 = unlimited)
+const SECTIONS = [
+ {title:"🙋 מתנדבים להובלת פעילויות", hint:"כל פעילות – עד 2 אחראים", groups:[{items:[
+  ["fri_activity","פעילות יום שישי בגוש עציון – תכנון והובלה",2],
+  ["tour","סיור לאלון הבודד – תיאום מדריך והובלה",2],
+  ["kids_lesson","שיעור לילדים בשבת 10:30",2],
+  ["story","שעת סיפור לקטנים אחרי סעודת ליל שבת",2],
+  ["big_kids","פעילות לילדים הגדולים אחרי סעודת ליל שבת",2],
+  ["tehilim","תהילים לילדים 13:15 – הובלה וחלוקת פרסים",2],
+  ["offer","אני רוצה להעביר שיעור / הדרכה / משהו אחר",0,"מה אני מציע/ה"]]}]},
+ {title:"🍰 עוגות לשבת", hint:"כל משפחה מביאה לפחות עוגה אחת – כל המרבה הרי זה משובח 😋", groups:[{items:[
+  ["cakes","עוגה לשבת",0,"סוג העוגה (לא חובה)"]]}]},
+ {title:"🥖 כיבוד ליום שישי בבוקר", hint:"", groups:[
+  {name:"לחמים ופיתות בסאג׳",items:[["rolls","40 לחמניות",1],["saj","סאג׳ להכנת פיתות",1],["flour","5 ק״ג קמח",1],["bowl","קערה גדולה לקמח וללישה",1],["oil","שמן זית",1]]},
+  {name:"ירקות וממרחים",items:[["veg","מגשי ירקות חתוכים גדולים",0],["hummus","2 ק״ג חומוס",1],["cheese","2 חבילות גבינה 500 גרם",1],["eggs","40 ביצים קשות",1],["olives","2 חבילות זיתים",1]]},
+  {name:"שתייה וכיבוד לילדים",items:[["water","מים",0],["snacks","חטיפים לילדים",0]]},
+  {name:"ציוד נוסף",items:[["wrap","חבילת ניילון נצמד",1],["serving","כלי הגשה, צלחות, כוסות ומפיות",1],["trash","שקיות אשפה",1],["safety","ציוד בטיחות לסאג׳ ואמצעי חימום מאושר",1]]}]},
+ {title:"🎸 ציוד ואווירה לשבת", hint:"", groups:[{items:[["guitar","גיטרה לשירי קבלת שבת",1],["games","משחקי קופסה",0],["prizes","פרסים לילדים לתהילים",1]]}]}
+];
+let claims=[];
+const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function render(){
+ const by={};claims.forEach(c=>(by[c.item]=by[c.item]||[]).push(c));
+ let total=0,done=0,h="";
+ for(const s of SECTIONS){
+  h+=`<section class="card"><h2>${s.title}</h2>${s.hint?`<p class="hint">${s.hint}</p>`:""}`;
+  for(const g of s.groups){
+   if(g.name)h+=`<h3>${g.name}</h3>`;
+   for(const [id,label,max,ph] of g.items){
+    const list=(by[id]||[]).sort((a,b)=>(a.ts||0)-(b.ts||0));
+    if(id!=="offer"){total++;if(list.length)done++;}
+    const full=max>0&&list.length>=max;
+    const badge=list.length?`<span class="badge taken">✓ ${max===0?list.length+" נרשמו":"שובץ"}</span>`:`<span class="badge free">פנוי</span>`;
+    h+=`<div class="item"><div class="top"><span class="t">${label}</span>${id==="offer"&&!list.length?"":badge}</div><div class="claims">`+
+     list.map(c=>`<div class="claim"><span>👤 ${esc(c.name)}${c.note?` <small>– ${esc(c.note)}</small>`:""}</span><button class="rm" onclick="rm('${c._id}','${esc(c.name).replace(/'/g,"")}')">הסר</button></div>`).join("")+`</div>`+
+     (full?"":`<div class="add"><input id="n_${id}" placeholder="השם שלי" /><input id="o_${id}" placeholder="${ph||"הערה (לא חובה)"}" /><button onclick="claim('${id}')">אני לוקח/ת</button></div>`)+`</div>`;
+   }
+  }
+  h+=`</section>`;
+ }
+ const focused=document.activeElement&&document.activeElement.id;
+ const vals={};document.querySelectorAll(".add input").forEach(i=>vals[i.id]=i.value);
+ document.getElementById("board").innerHTML=h;
+ for(const k in vals){const el=document.getElementById(k);if(el)el.value=vals[k];}
+ if(focused){const el=document.getElementById(focused);if(el)el.focus();}
+ document.getElementById("progTxt").textContent=`${done} מתוך ${total} פריטים שובצו`;
+ document.getElementById("progBar").style.width=(total?done/total*100:0)+"%";
+}
+async function load(){
+ try{const r=await fetch(ENDPOINT,{cache:"no-store"});if(!r.ok)throw 0;claims=await r.json();document.getElementById("err").style.display="none";render();}
+ catch(e){document.getElementById("err").style.display="block";if(!document.getElementById("board").innerHTML)render();}
+}
+async function claim(id){
+ const n=document.getElementById("n_"+id),o=document.getElementById("o_"+id);
+ const name=n.value.trim();if(!name){alert("נא לכתוב שם");n.focus();return;}
+ try{const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({item:id,name,note:o.value.trim(),ts:Date.now()})});if(!r.ok)throw 0;n.value="";o.value="";await load();}
+ catch(e){alert("השמירה נכשלה, נסו שוב");}
+}
+async function rm(_id,name){
+ if(!confirm(`להסיר את ${name} מהפריט?`))return;
+ try{await fetch(ENDPOINT+"/"+_id,{method:"DELETE"});await load();}catch(e){alert("ההסרה נכשלה");}
+}
+render();load();setInterval(()=>{if(!(document.activeElement&&document.activeElement.tagName==="INPUT"))load();},20000);
+</script>
+</body>
+</html>
