@@ -42,9 +42,13 @@ h1{font-family:"Suez One","Frank Ruhl Libre",serif;font-size:74px;color:var(--na
 footer{text-align:center;margin-top:30px}
 .slogan{font-family:"Frank Ruhl Libre",serif;font-style:italic;font-weight:900;font-size:44px;color:var(--navy)}
 .slogan::before,.slogan::after{content:"🌿";font-style:normal;margin:0 14px}
-.cta{display:block;width:fit-content;max-width:92%;margin:18px auto 0;background:var(--navy);color:#fff;text-decoration:none;border-radius:22px;padding:14px 30px;box-shadow:0 6px 18px rgba(31,61,102,.25)}
+.signup{display:flex;justify-content:center;align-items:center;gap:24px;margin:20px 30px 0;flex-wrap:wrap}
+.qr{display:flex;flex-direction:column;align-items:center;background:#fff;border:3px solid var(--navy);border-radius:18px;padding:8px 8px 6px;text-decoration:none}
+.qr img{width:220px;height:220px;display:block;image-rendering:pixelated}
+.qr span{font-size:22px;font-weight:800;color:var(--navy);margin-top:2px}
+.cta{display:block;width:fit-content;max-width:760px;margin:0;background:var(--navy);color:#fff;text-decoration:none;border-radius:22px;padding:14px 30px;box-shadow:0 6px 18px rgba(31,61,102,.25)}
 .ct{display:block;font-size:30px;font-weight:800}
-.cu{display:block;font-size:21px;color:#ffe9a8;margin-top:4px;word-break:break-all;font-weight:600}
+.cu{display:block;font-size:20px;color:#ffe9a8;margin-top:6px;white-space:nowrap;font-weight:600}
 @media(max-width:760px){.cols,.boxes{grid-template-columns:1fr;padding:20px 14px 0}h1{font-size:48px}.tag{font-size:24px}.date{font-size:22px}.box{margin-top:16px}}
 </style>
 </head>
@@ -100,7 +104,7 @@ footer{text-align:center;margin-top:30px}
 
 <footer>
 <div class="slogan">בואו נהפוך יחד את השבת למיוחדת!</div>
-<a class="cta" href="https://moshesaada10-web.github.io/shabbat-shalva/tasks.html?v=32"><span class="ct">📝 להשתבצות – מה אני מביא ובמה אני מתנדב</span><span class="cu" dir="ltr">https://moshesaada10-web.github.io/shabbat-shalva/tasks.html?v=32</span></a>
+<div class="signup"><a class="cta" href="https://moshesaada10-web.github.io/shabbat-shalva/tasks.html?v=32"><span class="ct">📝 להשתבצות – מה אני מביא ובמה אני מתנדב</span><span class="cu" dir="ltr">https://moshesaada10-web.github.io/shabbat-shalva/tasks.html?v=32</span></a><a class="qr" href="https://moshesaada10-web.github.io/shabbat-shalva/tasks.html?v=32"><img src="flyer-qr.png" alt="QR להשתבצות" /><span>סרקו להשתבצות 📲</span></a></div>
 </footer>
 </div>
 </body>
